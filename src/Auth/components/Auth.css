@@ -1,0 +1,59 @@
+.modal-div
+{
+    background-color: #ffffff;
+    color: #000000;
+    width: 35%;
+    height: 25%;
+    margin: 14% auto;
+    text-align: center; 
+    box-shadow: 1px 3px 3px 0px #eeeeee6e;
+    border-radius: 10px;
+    outline: none;
+}
+
+#modal-title
+{
+    margin: 0 auto;
+    color: rgb(156, 4, 4);
+}
+
+#modal-description-2
+{
+    text-decoration: none;
+    color: rgb(34, 133, 34);
+}
+
+/* Input Fileds */
+/* .login-div
+{
+    background: purple;
+} */
+.form-login
+{
+    margin: 15%  auto;
+    margin-bottom: 0;
+    border: 2px solid #000000;
+    border-radius: 5px;
+    width: 30%;
+    padding: 2%;
+    text-align: center;
+}
+.Login-button
+{
+    background:rgb(32, 32, 146);
+    color: #ffffff;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+  cursor: pointer;
+
+}
+input, select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-sizing: border-box;
+  }
