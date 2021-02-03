@@ -118,13 +118,14 @@ main {
 .calendar {
   display: block;
   position: relative;
-  width: 100vw;
+  width: 100%;
   /* margin: 0 5%; */
   background: var(--neutral-color);
   border: 1px solid var(--border-color);
 }
 
 .calendar .header {
+  margin-left:0;
   text-transform: uppercase;
   font-weight: 700;
   font-size: 115%;
@@ -170,6 +171,7 @@ main {
   cursor: pointer;
   background: var(--neutral-color);
   transition: 0.25s ease-out;
+  padding-left:0;
 }
 
 .calendar .body .cell:hover {
@@ -219,6 +221,11 @@ main {
   display: block;
   height: 100%;
 }
+/* .calendar .body .disabled .edit-tooltip:focus,.calendar .body .disabled .edit-tooltip:visited,.calendar .body .disabled .edit-tooltip:hover,.calendar .body .disabled .edit-tooltip:focus-within
+{
+  display: block;
+  height: 10%;
+} */
 
 
 .calendar .body .cell .bg {

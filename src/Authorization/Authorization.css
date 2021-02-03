@@ -97,7 +97,14 @@ code {
     margin: 0px;
     list-style-type: none;
   }
-  
+   
+  .uppercase {
+    text-transform: uppercase;
+}
+
+.text1{
+  font-size: 20px;    
+}
   
   /*---------------------------------------------*/
   input {
@@ -3536,4 +3543,3 @@ code {
   }
   
   
-

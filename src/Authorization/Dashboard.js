@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { Redirect } from "react-router-dom";
 import { AuthContext } from "./Auth";
 import firebaseConfig from "../config.js";
-import { Navbar, Button } from "react-bootstrap"
+// import { Navbar, Button } from "react-bootstrap"
 import logo from '../resources/logo-sample.png';
 import logout from '../resources/signout-icon.png'
 import  "./Dashboard.css"
@@ -23,11 +23,11 @@ const Dashboard = ({username}) => {
             <div className="m-l-10 navbar-brand  login100-form-title" style={{color:'#fff'}}>
               
               {/* Welcome<p style={{color:'white'}}>{username}</p> */}
-              <img src={logo} style={{height: '45px'}}></img>
+              <img src={logo} alt="" style={{height: '45px'}}></img>
               </div>
           <form className="form-inline">
             <p style={{color:'#fff'}}>{username} &nbsp;
-            <button className="m-r-10" style={{color:'white'}} onClick={() => firebaseConfig.auth().signOut()}><img src={logout} style={{height: '25px'}}></img></button>
+            <button className="m-r-10" style={{color:'white'}} onClick={() => firebaseConfig.auth().signOut()}><img src={logout} alt="" style={{height: '25px'}}></img></button>
             </p>  </form>
         </nav>
        

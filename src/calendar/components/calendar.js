@@ -3,10 +3,10 @@ import { Fab, Tooltip } from "@material-ui/core";
 import AddIcon from "@material-ui/icons/Add";
 import {
   format,
-  // startOfWeek,
   addDays,
   startOfMonth,
   endOfMonth,
+  // startOfWeek,
   // endOfWeek,
  // getYear,
   isSameMonth,
@@ -87,9 +87,9 @@ class Calendar extends Component {
  }
   renderHeader() {
     const dateFormat = "MMMM";
-    const yearFormat= "yyyy";
+    // const yearFormat= "yyyy";
     const month = format(this.state.currentMonth, dateFormat) + "";
-    const year = format(this.state.currentYear, yearFormat)+"";
+    // const year = format(this.state.currentYear, yearFormat)+"";
     const t = this.props.t;
     const i18n = this.props.i18n;
     return (
@@ -172,7 +172,7 @@ class Calendar extends Component {
                         key={i}
                         className="event-data"
                       >
-                        {e.time} hr- {e.title}
+                        {e.time} hr- {e.category}
                       </div>
                     ))}
                 </div>
@@ -261,7 +261,7 @@ class Calendar extends Component {
   };
 
   handleFormSubmit = ({ id, title, category, description, date, time }) => {
-    console.log(title);
+    // console.log(title);
     const { selectedDate, events } = this.state;
     if (id) {
       const updatedEvent = {
