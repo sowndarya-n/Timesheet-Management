@@ -56,11 +56,11 @@ class AddEventModal extends Component {
     }));
   };
 
-  setTime = t => {
+  setTime = ti => {
     this.setState(prevState => ({
       eventToEdit: {
         ...prevState.eventToEdit,
-        time: t
+        time: ti
       }
     }));
   };
@@ -157,7 +157,7 @@ class AddEventModal extends Component {
                     type="number"
                     // defaultValue=none
                     label="Task Duration (in hrs)"
-                    // defaultValue={time}
+                    defaultValue={time}
                     variant="outlined"
                     fullWidth
                     margin="normal"

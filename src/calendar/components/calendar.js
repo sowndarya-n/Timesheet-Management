@@ -27,16 +27,17 @@ const EVENT_LIMIT = 5;
 class Calendar extends Component {
   constructor() {
     super();
+    //Handles state by getting current month and date using js date function
     this.state = {
       currentMonth: new Date(),
-      selectedDate: new Date(),
-      currentYear: new Date(),
-      events: [],
-      showEventModal: false,
+      selectedDate: new Date(), 
+      currentYear: new Date(), 
+      events: [], //Stores all the tasks
+      showEventModal: false, //Initially the add task modal is not displayed by setting showEventModal to false
       eventToEdit: {}
     };
   }
-
+//Loads the tasks added(if any) when component is loaded
   componentDidMount() {
     let events =
       localStorage.getItem("CalendarEvents") !== ("undefined" && null)
@@ -79,12 +80,15 @@ class Calendar extends Component {
       </div>
     );
   }
+
+  //Loads the Navigation Header with logo, username and logout button
  renderNavHeader()
  {
    return(
     <Dashboard username={this.props.username} />
    );
  }
+   //Loads the header of calendar with Month name and prev&next buttons
   renderHeader() {
     const dateFormat = "MMMM";
     // const yearFormat= "yyyy";
@@ -112,7 +116,7 @@ class Calendar extends Component {
       </div>
     );
   }
-
+  //Loads the row with week days according to the dates
   renderDays() {
     const daysOfWeek = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"];
     const days = [];
@@ -127,7 +131,7 @@ class Calendar extends Component {
     }
     return <div className="days row">{days}</div>;
   }
-
+  //Loads the rows with dates of current month
   renderCells() {
     const { currentMonth, selectedDate, events } = this.state;
     const monthStart = startOfMonth(currentMonth);
@@ -214,30 +218,31 @@ class Calendar extends Component {
   editEvent = e => {
     this.setState({ eventToEdit: e }, this.toggleModal);
   };
-
+//Loads next month using add Months module of date-fns 
   nextMonth = () => {
     this.setState({
       currentMonth: addMonths(this.state.currentMonth, 1)
     });
   };
-
+//Loads previous month using sub Months module of date-fns 
   prevMonth = () => {
     this.setState({
       currentMonth: subMonths(this.state.currentMonth, 1)
     });
   };
+  //Loads next year using next Year module of date-fns 
   nextYear = () => {
     this.setState({
       currentMonth: addYears(this.state.currentYear, 1)
     });
   };
-
+ //Loads previous year using prev Year module of date-fns 
   prevYear = () => {
     this.setState({
       currentMonth: subYears(this.state.currentYear, 1)
     });
   };
-
+//Switches between hide &show add event modal based on state 
   toggleModal = () => {
     const { showEventModal } = this.state;
     const newState = { showEventModal: !showEventModal };
@@ -246,7 +251,7 @@ class Calendar extends Component {
     }
     this.setState(newState);
   };
-
+//Adds events based on event limit if not alerts the user
   onAddEventClick = date => {
     this.setState({ selectedDate: date });
     const { events } = this.state;
@@ -259,7 +264,7 @@ class Calendar extends Component {
       this.setState({ selectedDate: date }, this.toggleModal);
     }
   };
-
+//Task data is stored after add task button is clicked
   handleFormSubmit = ({ id, title, category, description, date, time }) => {
     // console.log(title);
     const { selectedDate, events } = this.state;
@@ -286,8 +291,9 @@ class Calendar extends Component {
         title,
         category,
         description,
+        time,
         date: selectedDate,
-        time
+        
       };
       this.setState({ events: events.concat(newEvent) }, () => {
         this.toggleModal();
@@ -296,7 +302,7 @@ class Calendar extends Component {
       });
     }
   };
-
+//main render function that loads nav, calendar header & body
   render() {
     const { showEventModal, eventToEdit } = this.state;
     return (
