@@ -1,47 +1,48 @@
-import React, { useContext } from "react";
+import React, {useContext,useState} from "react";
 import { Redirect } from "react-router-dom";
 import { AuthContext } from "./Auth";
 import firebaseConfig from "../config";
 import { Link } from "react-router-dom"
-import  { useRef, useState } from "react"
-import { Alert } from "react-bootstrap"
-import "./Authorization.css"
-const LogIn = ({setUsername,username}) => {
+import {Alert} from 'react-bootstrap'
 
 
-    React.useEffect(() => {
+const SignUp = ({setUsername,username}) => {
+  
+React.useEffect(() => {
         localStorage.setItem('myValueInLocalStorage', username);
       }, [username]);
-      
-    
 
-    const changeState = (event) => { 
+const changeState = (event) => { 
         setUsername(event.target.value);  
        };
+    
 
-    const emailRef = useRef()
-    const passwordRef = useRef()
-    const [error, setError] = useState("")
-    const [, setLoading] = useState(false)
-    async function handleSubmit(e) {
-        e.preventDefault();
-        const { email, password } = e.target.elements;
-    
-        try {
-          
-          setError("")
-          setLoading(true)
-          await firebaseConfig.auth().signInWithEmailAndPassword(email.value, password.value);
-          
-        } catch {
-          setError("Invalid Credentials")
-        }
-    
-        setLoading(false)
-      }
+  const [error, setError] = useState("")
+  const [, setLoading] = useState(false)
+
+  
+ 
 
 
-    
+  async function handleSubmit(e) {
+    e.preventDefault();    
+    const { email, password } = e.target.elements;
+    try {
+
+      setLoading(true)
+      setError("")
+      await firebaseConfig.auth().createUserWithEmailAndPassword(email.value, password.value);
+      
+      
+     } 
+     catch{
+         setError('Invalid !')
+     
+    }
+
+    setLoading(false)
+  };
+  
   const { currentUser } = useContext(AuthContext);
   if (currentUser) {
     return (
@@ -49,14 +50,19 @@ const LogIn = ({setUsername,username}) => {
     <Redirect to="/home" />
     );
   }
-  return (
 
-    <div className="limiter">
+
+
+
+
+  return (
+    <>
+      <div className="limiter">
     <div className="container-login100" style={{ backgroundImage: `url(https://img3.goodfon.com/wallpaper/big/7/26/chasy-budilnik-vremya-4010.jpg)` }}>
     
         <div className="wrap-login100 p-t-30 p-b-50">
         <h3 className="login100-form-title p-b-41 uppercase">
-                Account &nbsp; Login
+                Sign&nbsp; Up
             </h3>
             <form 
                 className="login100-form validate-form p-b-33 p-t-5"
@@ -68,10 +74,10 @@ const LogIn = ({setUsername,username}) => {
                         type="email" 
                         name="email" 
                         
-                        ref={emailRef}
+                        
                         placeholder="Email"
                         onChange={changeState}
-                        autoComplete="off"
+                        
                         required
                     />
                     <span className="focus-input100" >
@@ -89,8 +95,8 @@ const LogIn = ({setUsername,username}) => {
                         type="password" 
                         name="password" 
                         placeholder="Password"
-                        autoComplete="off"
-                        ref={passwordRef}
+                        
+                        
                     />
                     <span className="focus-input100">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="120" fill="currentColor" className="m-l-35 bi bi-keyboard" viewBox="0 0 16 16">
@@ -105,14 +111,14 @@ const LogIn = ({setUsername,username}) => {
                     <button 
                         className="login100-form-btn" 
                         type="submit"
+                        onSubmit={handleSubmit}
                         >
-            
-                        Login
+                            Sign Up
                     </button>
                 </div>
                 <div className="container-login100-form-btn m-t-32">
-                <Link to="/forgot-password" className="text1" >Forgot Password &nbsp;/&nbsp;</Link>
-                <Link to="/SignUp" className="text1" >Sign Up </Link>
+                <Link to="/forgot-password" className="text1" >Forgot Password&nbsp;/&nbsp;</Link>
+                <Link to="/" className="text1" > Login </Link>
                 </div> 
                 <div className="container-login100-form-btn m-t-32 red ">
                     {error && <Alert variant="danger">{error}</Alert>}
@@ -122,8 +128,8 @@ const LogIn = ({setUsername,username}) => {
         </div>
     </div>
 </div>
-
+    </>
   );
 };
 
-export default LogIn;
+export default SignUp;

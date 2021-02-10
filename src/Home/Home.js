@@ -1,14 +1,12 @@
 import React from "react";
 import Calendar from "../calendar/components/calendar";
-// import Auth from '../Auth/components/Auth';
-// import Error from '../Auth/components/Error'
 import Aux from '../Auxilary/Auxilary';
 import LogIn from '../Authorization/LogIn';
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-// import SignUp from "./components/SignUp";
 import { AuthProvider } from "../Authorization/Auth";
 import ForgotPassword from "../Authorization/ForgotPassword";
-// import Dashboard from "../Authorization/Dashboard";
+import ErrorPage from '../ErrorPage/ErrorPage'
+import SignUp from "../Authorization/SignUp";
 
 
 const Home = () => {
@@ -21,9 +19,10 @@ const Home = () => {
                 <AuthProvider>
                     <Switch>
                         <Route exact path="/"><LogIn username={username} setUsername={setUsername} /></Route>
-                        {/* <Route path="/loginerror" exact render={(props) => <Error {...props} />}></Route> */}
                         <Route path="/home" exact render={(props) => <Calendar {...props} username={username} />}></Route>
                         <Route path="/forgot-password" component={ForgotPassword} />
+                        <Route path="/SignUp" ><SignUp username={username} setUsername={setUsername} /></Route>
+                        <Route path="*" component={ErrorPage}/>
                     </Switch>
                 </AuthProvider>
             </Aux>
