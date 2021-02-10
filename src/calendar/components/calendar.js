@@ -38,13 +38,21 @@ class Calendar extends Component {
     };
   }
 //Loads the tasks added(if any) when component is loaded
+componentDidUpdate(){
+  const user = localStorage.getItem('myValueInLocalStorage') 
+  console.log(user)
+  
+ }
   componentDidMount() {
+    const user = localStorage.getItem('myValueInLocalStorage')
     let events =
-      localStorage.getItem("CalendarEvents") !== ("undefined" && null)
-        ? JSON.parse(localStorage.getItem("CalendarEvents"))
+      localStorage.getItem(`CalendarEvents${user}`) !== ("undefined" && null)
+        ? JSON.parse(localStorage.getItem(`CalendarEvents${user}`))
         : [];
     this.setState({ events: events });
+    
   }
+
 
   handleLanguageChange(lang) {
     this.props.i18n.changeLanguage(lang);
@@ -277,12 +285,13 @@ class Calendar extends Component {
         date,
         time
       };
+      const user = localStorage.getItem('myValueInLocalStorage')
       const eventIndex = events.findIndex(e => e.id === id);
       events.splice(eventIndex, 1, updatedEvent);
       this.setState({ events }, () => {
         this.toggleModal();
         const { events } = this.state;
-        localStorage.setItem("CalendarEvents", JSON.stringify(events));
+        localStorage.setItem(`CalendarEvents${user}`, JSON.stringify(events));
       });
     } else {
       const lastEvent = events[events.length - 1];
@@ -298,7 +307,8 @@ class Calendar extends Component {
       this.setState({ events: events.concat(newEvent) }, () => {
         this.toggleModal();
         const { events } = this.state;
-        localStorage.setItem("CalendarEvents", JSON.stringify(events));
+        const user = localStorage.getItem('myValueInLocalStorage')
+        localStorage.setItem(`CalendarEvents${user}`, JSON.stringify(events));
       });
     }
   };

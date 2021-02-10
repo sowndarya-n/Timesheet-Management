@@ -70,7 +70,8 @@ export default function ForgotPassword() {
                     </button>
                 </div>
                 <div className=" text  m-t-32" style={{textAlign:"center"}}>
-                <Link to="/" className='text1' >Login ?</Link>
+                <Link to="/" className='text1' >Login / </Link>
+                <Link to="/SignUp" className='text1' > SignUp</Link>
                 </div>
                 <div className="container-login100-form-btn m-t-32 red ">
                     {error && <Alert variant="danger">{error}</Alert>}
