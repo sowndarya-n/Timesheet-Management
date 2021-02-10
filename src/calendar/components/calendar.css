@@ -107,6 +107,14 @@ main {
   justify-content: center;
   text-align: center;
 }
+.days.row
+{
+margin: 0;
+}
+.col.col-center
+{
+  padding: 0;
+}
 
 .col-end {
   justify-content: flex-end;

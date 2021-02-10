@@ -2,9 +2,6 @@ import React, { Component } from "react";
 import Modal from "@material-ui/core/Modal";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
-// import FormControl from '@material-ui/core/FormControl';
-// import Select from '@material-ui/core/Select';
-// import InputLabel from '@material-ui/core/InputLabel';
 import "./add-event.css";
 
 class AddEventModal extends Component {
@@ -92,40 +89,6 @@ class AddEventModal extends Component {
                   onChange={e => this.setTitle(e.target.value)}
                 />
               </div>
-              {/* <div>
-                <FormControl >
-                  <InputLabel id="demo-simple-select-label">Age</InputLabel>
-                  <Select
-                    labelId="demo-simple-select-label"
-                    id="demo-simple-select"
-                    // value={age}
-                    // onChange={handleChange}
-                  >
-                    <MenuItem value={10}>Ten</MenuItem>
-                    <MenuItem value={20}>Twenty</MenuItem>
-                    <MenuItem value={30}>Thirty</MenuItem>
-                  </Select>
-                </FormControl>
-              </div> */}
-              {/* <div>
-                <FormControl required >
-                  <InputLabel htmlFor="task-category-required">Task Category</InputLabel>
-                  <Select
-                    native
-                    // value={state.age}
-                    // onChange={handleChange}
-                    name="Task Category"
-                    inputProps={{
-                      id: 'task-category-required',
-                    }}
-                  >
-                    <option aria-label="None" value="" />
-                    <option >Surgey</option>
-                    <option >Paitent Check-up</option>
-                    <option>Rounds</option>
-                  </Select>
-                </FormControl>
-                </div> */}
                 <div>
                   <TextField
                     required
@@ -165,7 +128,7 @@ class AddEventModal extends Component {
                       shrink: true
                     }}
                     inputProps={{
-                      step: 300 // 5 min
+                      step: 1
                     }}
                     onChange={e => this.setTime(e.target.value)}
                   />
@@ -190,3 +153,29 @@ class AddEventModal extends Component {
 }
 
 export default AddEventModal;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
