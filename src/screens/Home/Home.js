@@ -1,6 +1,5 @@
 import React from "react";
 import Calendar from "../calendar/components/calendar";
-import Aux from '../Auxilary/Auxilary';
 import LogIn from '../Authorization/LogIn';
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { AuthProvider } from "../Authorization/Auth";
@@ -15,7 +14,6 @@ const Home = () => {
     );
     return (
         <BrowserRouter>
-            <Aux>
                 <AuthProvider>
                     <Switch>
                         <Route exact path="/"><LogIn username={username} setUsername={setUsername} /></Route>
@@ -25,7 +23,6 @@ const Home = () => {
                         <Route path="*" component={ErrorPage}/>
                     </Switch>
                 </AuthProvider>
-            </Aux>
         </BrowserRouter>
     );
 }
