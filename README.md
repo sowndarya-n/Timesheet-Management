@@ -1,7 +1,6 @@
 
 # Introduction
-This Project allows the user to add his/her tasks and lock the duration of each task for a particular day which is further used to evaluate the efforts of the user working in an organization to generate payroll. 
-
+This project provides a streamlined solution for users to efficiently manage their tasks, allowing them to input and allocate specific time durations for each task on a given day. The system is designed to meticulously track and lock task durations, enabling a comprehensive evaluation of the user's efforts within an organizational context. This data serves as a valuable foundation for payroll generation, offering a transparent and organized approach to assess and compensate the user's contributions effectively.
 
 # Technology Stack:
 React, Material-UI, Firebase
